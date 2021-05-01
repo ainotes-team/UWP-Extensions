@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+         IgnorableNamespaces="uap uap3 mp">
+  <Identity Name="015eefc1-86d1-4560-9488-c276a3c4b7cf" Publisher="CN=2E5D2003-2E21-48BD-AD54-CD7DF598F6AA" Version="1.0.1.0" />
+  <mp:PhoneIdentity PhoneProductId="015eefc1-86d1-4560-9488-c276a3c4b7cf" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>AINotes Maps Plugin</DisplayName>
+    <PublisherDisplayName>Vincent Schmandt</PublisherDisplayName>
+    <Logo>Assets\map96.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.15063.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MapsExtension.App">
+      <uap:VisualElements DisplayName="AINotes Maps Plugin" Description="Adds map support to AINotes" Square150x150Logo="Assets\map96.png" Square44x44Logo="Assets\map96.png" BackgroundColor="transparent">
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="de.vincentscode.mapservice" />
+        </uap:Extension>
+        <uap3:Extension Category="windows.appExtension">
+          <uap3:AppExtension Name="de.vincentscode.ainotesExtension" Id="maps" DisplayName="Maps Plugin" Description="Adds map support to AINotes" PublicFolder="Public">
+            <uap3:Properties>
+              <Service>de.vincentscode.mapservice</Service>
+            </uap3:Properties>
+          </uap3:AppExtension>
+        </uap3:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
